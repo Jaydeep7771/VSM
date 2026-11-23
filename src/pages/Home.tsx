@@ -60,11 +60,11 @@ function Hero() {
           One rises from the base, one washes in from the left behind the copy. */}
       <div
         aria-hidden
-        className="absolute inset-0 z-[4] bg-gradient-to-t from-white from-[12%] via-white/70 via-[46%] to-transparent"
+        className="absolute inset-0 z-[4] bg-gradient-to-t from-white from-[8%] via-white/55 via-[42%] to-transparent"
       />
       <div
         aria-hidden
-        className="absolute inset-0 z-[4] bg-gradient-to-r from-white/85 from-[2%] via-white/25 via-[38%] to-transparent"
+        className="absolute inset-0 z-[4] bg-gradient-to-r from-white/75 from-[1%] via-white/15 via-[34%] to-transparent"
       />
 
       {/* The whole hero block dims and lifts away as the reader scrolls past it */}

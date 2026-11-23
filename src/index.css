@@ -288,13 +288,13 @@
 
 @layer utilities {
   /* ----- Photography treatment -------------------------------------
-     The site's palette is black, white and gray, so photographs are
-     desaturated to join it. Dial --photo-saturate up toward 1 to let
-     the original warmth back in (0 = fully monochrome).
+     Photographs keep their own colour — the black / white / gray system
+     governs the interface around them, not the work itself. Only a light
+     contrast lift is applied. Set --photo-saturate to 0 for monochrome.
      ------------------------------------------------------------------ */
   .photo-mono {
-    --photo-saturate: 0;
-    filter: grayscale(calc(1 - var(--photo-saturate))) contrast(1.08) brightness(0.99);
+    --photo-saturate: 1;
+    filter: grayscale(calc(1 - var(--photo-saturate))) contrast(1.03) saturate(1.02);
   }
 
   /* ----- Scroll reveal ----- */
