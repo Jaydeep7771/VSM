@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { useReveal } from '../lib/useReveal';
+import { useScrollFade } from '../lib/useScrollFade';
 
 /* ------------------------------------------------------------------ */
 /* Reveal-on-scroll wrapper                                            */
@@ -31,6 +32,53 @@ export function Reveal({
       ref={ref as never}
       className={`reveal ${stagger ? 'stagger' : ''} ${shown ? 'reveal-in' : ''} ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+    >
+      {children}
+    </Component>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Scroll-linked fade                                                  */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Opacity tied to scroll position rather than triggered once. The item
+ * fades up as it rises into view and, with `fadeOut`, dims again as it
+ * leaves through the top — so scrolling back up reverses it.
+ */
+export function ScrollFade({
+  children,
+  className = '',
+  as = 'div',
+  fadeOut = false,
+  /** Fade-in distance as a fraction of viewport height. Lower = quicker. */
+  distance = 0.45,
+  /** Fade-out distance. Larger = a longer, gentler exit. */
+  exitDistance = 0.45,
+  /** Pixels of upward drift paired with the fade. */
+  lift = 28,
+}: {
+  children: ReactNode;
+  className?: string;
+  as?: Tag;
+  fadeOut?: boolean;
+  distance?: number;
+  exitDistance?: number;
+  lift?: number;
+}) {
+  const { ref, progress } = useScrollFade<HTMLDivElement>({ fadeOut, distance, exitDistance });
+  const Component = as;
+
+  return (
+    <Component
+      ref={ref as never}
+      className={className}
+      style={{
+        opacity: progress,
+        transform: lift ? `translate3d(0, ${(1 - progress) * lift}px, 0)` : undefined,
+        willChange: 'opacity, transform',
+      }}
     >
       {children}
     </Component>

@@ -15,6 +15,7 @@ import {
   Eyebrow,
   ImageSlot,
   Reveal,
+  ScrollFade,
   SectionHead,
   TextLink,
   WordReveal,
@@ -66,7 +67,14 @@ function Hero() {
         className="absolute inset-0 z-[4] bg-gradient-to-r from-white/85 from-[2%] via-white/25 via-[38%] to-transparent"
       />
 
-      <div className="shell absolute inset-x-0 bottom-0 z-[5] max-w-[90rem] pb-[clamp(2.5rem,6vw,5rem)]">
+      {/* The whole hero block dims and lifts away as the reader scrolls past it */}
+      <ScrollFade
+        fadeOut
+        lift={0}
+        distance={0.2}
+        exitDistance={0.95}
+        className="shell absolute inset-x-0 bottom-0 z-[5] max-w-[90rem] pb-[clamp(2.5rem,6vw,5rem)]"
+      >
         <div className="flex flex-wrap items-end justify-between gap-10">
           <div className="max-w-[46rem]">
             <div
@@ -127,7 +135,7 @@ function Hero() {
             </span>
           </div>
         </div>
-      </div>
+      </ScrollFade>
     </section>
   );
 }
@@ -135,17 +143,17 @@ function Hero() {
 function Statement() {
   return (
     <section className="shell max-w-[70rem] py-[clamp(6rem,14vw,13rem)] text-center">
-      <Reveal>
+      <ScrollFade fadeOut distance={0.5}>
         <Eyebrow className="justify-center eyebrow-rule">The studio</Eyebrow>
-      </Reveal>
-      <Reveal delay={120}>
+      </ScrollFade>
+      <ScrollFade fadeOut distance={0.55}>
         <p className="display mx-auto mt-10 mb-12 max-w-[44ch] text-[clamp(1.625rem,3.4vw,2.875rem)] leading-[1.22]">
           We design contemporary Indian interiors rooted in Punjab — lime plaster, hand-cut stone,
           brass worked by hand, light that moves slowly through a room. Every home is made for one
           family, and <em>meant to outlast every trend.</em>
         </p>
         <TextLink to="/studio">Meet the studio</TextLink>
-      </Reveal>
+      </ScrollFade>
     </section>
   );
 }
@@ -206,14 +214,14 @@ function SelectedWork() {
       <SectionHead title="Selected work" action={<TextLink to="/portfolio">All projects</TextLink>} />
       <div className="grid gap-x-[clamp(1.5rem,4vw,4.5rem)] gap-y-[clamp(3rem,6vw,5.5rem)] md:grid-cols-5">
         {projects.slice(0, 2).map((p, i) => (
-          <Reveal
+          <ScrollFade
             as="article"
             key={p.slug}
-            delay={i * 120}
+            distance={i === 0 ? 0.5 : 0.6}
             className={i === 0 ? 'md:col-span-3' : 'md:col-span-2 md:mt-[clamp(0px,13vw,12rem)]'}
           >
             <ProjectCard project={p} index={i} aspect={i === 0 ? 'aspect-[4/5]' : 'aspect-[3/4]'} />
-          </Reveal>
+          </ScrollFade>
         ))}
       </div>
     </section>
@@ -308,7 +316,13 @@ function Testimonials() {
         </Reveal>
         <div className="grid gap-[clamp(3.5rem,8vw,8rem)] md:grid-cols-2">
           {testimonials.map((t, i) => (
-            <Reveal as="figure" key={t.who} delay={i * 140} className="m-0">
+            <ScrollFade
+              as="figure"
+              key={t.who}
+              fadeOut
+              distance={i === 0 ? 0.5 : 0.62}
+              className="m-0"
+            >
               <div className="font-serif h-9 text-[5rem] leading-[0.6] text-graphite">“</div>
               <blockquote className="display m-0 mb-9 text-[clamp(1.5rem,2.6vw,2.125rem)] italic leading-[1.3] text-white">
                 {t.quote}
@@ -317,7 +331,7 @@ function Testimonials() {
               <figcaption className="eyebrow text-ash">
                 {t.who} — {t.project}
               </figcaption>
-            </Reveal>
+            </ScrollFade>
           ))}
         </div>
       </div>
