@@ -3,6 +3,15 @@
  * Swap the bracketed placeholders for real studio details before launch.
  */
 
+/**
+ * The studio's number, defined once. `display` is what people read,
+ * `e164` drives the tel: and wa.me links — change both together.
+ */
+const studioPhone = {
+  display: '+91 70870 97401',
+  e164: '917087097401',
+} as const;
+
 export const studio = {
   name: 'vSM Innovators',
   tagline: 'Interior Design Studio · Punjab',
@@ -10,11 +19,11 @@ export const studio = {
     'Luxury interior design for residences, villas and farmhouses in Jalandhar, Ludhiana and Amritsar.',
   cities: ['Jalandhar', 'Ludhiana', 'Amritsar'],
   address: ['[Studio address]', 'Jalandhar, Punjab [PIN]', 'Visits by appointment'],
-  phone: '+91 XXXXX XXXXX',
-  phoneHref: 'tel:+91XXXXXXXXXX',
+  phone: studioPhone.display,
+  phoneHref: `tel:+${studioPhone.e164}`,
   email: 'hello@vsminnovators.com',
-  whatsapp: 'https://wa.me/917087097401',
-  whatsappNumber: '+91 70870 97401',
+  whatsapp: `https://wa.me/${studioPhone.e164}`,
+  whatsappNumber: studioPhone.display,
   instagram: 'https://instagram.com/vsminnovators',
   instagramHandle: '@vsminnovators',
 } as const;
