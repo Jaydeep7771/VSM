@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>vSM Innovators — Luxury Interior Designer in Jalandhar, Ludhiana &amp; Amritsar</title>
+<meta name="description" content="vSM Innovators is a luxury interior design studio in Punjab creating bespoke residences, villas and farmhouses across Jalandhar, Ludhiana and Amritsar. Full-service and turnkey interior design.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Jost:wght@300;400;500&amp;display=swap">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","InteriorDesigner"],"name":"vSM Innovators","description":"Luxury interior design studio for residences, villas and farmhouses in Punjab.","address":{"@type":"PostalAddress","addressLocality":"Jalandhar","addressRegion":"Punjab","addressCountry":"IN"},"areaServed":["Jalandhar","Ludhiana","Amritsar"],"telephone":"[+91 XXXXX XXXXX]","url":"[https://vsminnovators.com]"}</script>
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;background:#FFFFFF;color:#000000;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#5C5C5C;text-decoration:none}
+a:hover{color:#000000}
+input,select,textarea,button{font:inherit}
+::selection{background:#D6D6D6}
+</style>
+</helmet>
+
+<div style="font-family:'Jost',sans-serif;font-weight:300;background:#FFFFFF;color:#000000;min-height:100vh">
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 clamp(20px,4vw,56px);background:#FFFFFF">
+  <button onClick="{{ goHome }}" aria-label="vSM Innovators — home" style="background:none;border:0;padding:0;cursor:pointer;display:flex;align-items:baseline;gap:10px;color:#000000">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;letter-spacing:0.01em">vSM</span>
+    <span style="font-size:11px;letter-spacing:0.32em;text-transform:uppercase;font-weight:400">Innovators</span>
+  </button>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2.5vw,32px)">
+    <button onClick="{{ goPortfolio }}" style="background:none;border:0;cursor:pointer;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#000000;padding:8px 0" style-hover="color:#5C5C5C">Work</button>
+    <button onClick="{{ toggleMenu }}" style="background:none;border:0;cursor:pointer;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#000000;padding:8px 0;display:flex;align-items:center;gap:10px" style-hover="color:#5C5C5C">{{ menuLabel }}<span style="display:inline-block;width:22px;height:1px;background:currentColor"></span></button>
+  </div>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <nav style="position:fixed;inset:72px 0 0 0;z-index:70;background:#FFFFFF;overflow:auto;padding:clamp(32px,6vw,80px) clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <sc-for list="{{ nav }}" as="item" hint-placeholder-count="7">
+        <button onClick="{{ item.go }}" style="background:none;border:0;padding:6px 0;cursor:pointer;text-align:left;display:flex;align-items:baseline;gap:20px;color:#000000" style-hover="color:#5C5C5C">
+          <span style="font-size:11px;letter-spacing:0.2em;color:#5C5C5C;width:24px">{{ item.num }}</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(40px,6vw,72px);line-height:1.05">{{ item.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="align-self:end;display:flex;flex-direction:column;gap:20px;font-size:15px;line-height:1.7;color:#444444;max-width:360px">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;line-height:1.35;color:#000000">Interiors for Jalandhar, Ludhiana and Amritsar — made slowly, made to last.</p>
+      <div>Studio visits by appointment<br>[Studio address], Jalandhar, Punjab</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap"><a href="https://wa.me/[91XXXXXXXXXX]">WhatsApp</a><a href="tel:[+91XXXXXXXXXX]">Call</a><a href="https://instagram.com/[vsminnovators]">Instagram</a></div>
+    </div>
+  </nav>
+</sc-if>
+
+<main style="padding-top:72px">
+
+<!-- ============ HOME ============ -->
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <section data-screen-label="Home" style="position:relative;height:calc(100svh - 72px);min-height:560px;overflow:hidden;background:#EEEEEE">
+    <sc-for list="{{ heroSlides }}" as="s" hint-placeholder-count="3">
+      <div style="position:absolute;inset:0;opacity:{{ s.opacity }};transform:scale({{ s.scale }});transition:opacity 2.4s ease, transform 8s ease-out">
+        <image-slot id="{{ s.id }}" shape="rect" placeholder="{{ s.alt }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      </div>
+    </sc-for>
+    <div style="position:absolute;left:clamp(16px,4vw,56px);bottom:clamp(16px,4vw,56px);right:clamp(16px,4vw,56px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;pointer-events:none">
+      <div style="background:#FFFFFF;padding:clamp(28px,4vw,52px);max-width:660px;pointer-events:auto">
+        <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:20px">Interior Design Studio · Punjab</div>
+        <h1 style="margin:0 0 32px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(42px,6vw,84px);line-height:1;letter-spacing:-0.01em;text-wrap:balance">Spaces crafted to be lived in, <em style="font-weight:300">beautifully.</em></h1>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button onClick="{{ goPortfolio }}" style="white-space:nowrap;background:#000000;color:#FFFFFF;border:0;padding:17px 28px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:background .4s" style-hover="background:#444444">View Our Work</button>
+          <button onClick="{{ goContact }}" style="white-space:nowrap;background:transparent;color:#000000;border:1px solid #000000;padding:16px 28px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:all .4s" style-hover="background:#000000;color:#FFFFFF">Book a Consultation</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;pointer-events:auto;padding:10px 0">
+        <sc-for list="{{ heroSlides }}" as="s" hint-placeholder-count="3">
+          <button onClick="{{ s.go }}" aria-label="Show slide" style="width:28px;height:20px;border:0;padding:0;background:none;cursor:pointer;display:flex;align-items:center"><span style="display:block;width:100%;height:1px;background:{{ s.dot }}"></span></button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="max-width:1100px;margin:0 auto;padding:clamp(96px,14vw,200px) clamp(20px,5vw,72px)">
+    <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:32px">The Studio</div>
+    <p style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.6vw,48px);line-height:1.25;text-wrap:pretty">We design contemporary Indian interiors rooted in Punjab — lime plaster, hand-cut stone, brass worked by hand, light that moves slowly through a room. Every home is made for one family, and meant to outlast every trend.</p>
+    <button onClick="{{ goAbout }}" style="margin-top:40px;background:none;border:0;border-bottom:1px solid #5C5C5C;padding:0 0 6px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5C5C5C;cursor:pointer" style-hover="color:#000000;border-color:#000000">Meet the studio</button>
+  </section>
+
+  <section style="padding:0 clamp(20px,5vw,72px) clamp(96px,12vw,180px);max-width:1440px;margin:0 auto">
+    <div data-reveal="" style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:48px;border-top:1px solid #DDDDDD;padding-top:24px">
+      <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4.5vw,64px);line-height:1">Selected Work</h2>
+      <button onClick="{{ goPortfolio }}" style="background:none;border:0;padding:0;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5C5C5C;cursor:pointer" style-hover="color:#000000">All projects →</button>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,80px);align-items:flex-start">
+      <article data-reveal="" onClick="{{ p1.open }}" style="flex:1.4 1 520px;cursor:pointer">
+        <div style="position:relative;aspect-ratio:4/5;background:#EEEEEE;overflow:hidden">
+          <image-slot id="home-feat-haveli" shape="rect" placeholder="{{ p1.coverAlt }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+        </div>
+        <div style="display:flex;justify-content:space-between;gap:16px;margin-top:20px;flex-wrap:wrap">
+          <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:30px">{{ p1.name }}</h3>
+          <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6B6B6B;padding-top:10px">{{ p1.location }} · {{ p1.type }}</div>
+        </div>
+      </article>
+      <article data-reveal="" onClick="{{ p2.open }}" style="flex:1 1 360px;cursor:pointer;margin-top:clamp(0px,14vw,220px)">
+        <div style="position:relative;aspect-ratio:3/4;background:#EEEEEE;overflow:hidden">
+          <image-slot id="home-feat-orchard" shape="rect" placeholder="{{ p2.coverAlt }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+        </div>
+        <div style="display:flex;justify-content:space-between;gap:16px;margin-top:20px;flex-wrap:wrap">
+          <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:30px">{{ p2.name }}</h3>
+          <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6B6B6B;padding-top:10px">{{ p2.location }} · {{ p2.type }}</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section style="background:#F5F5F5;padding:clamp(80px,10vw,160px) clamp(20px,5vw,72px)">
+    <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(40px,6vw,96px)">
+      <div data-reveal="">
+        <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:24px">Services</div>
+        <h2 style="margin:0 0 28px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4.5vw,64px);line-height:1.02;text-wrap:balance">From the first sketch to the last cushion.</h2>
+        <p style="margin:0 0 32px;font-size:15px;line-height:1.75;color:#444444;max-width:440px">One studio, one point of contact. We design, source, build and style — so the home you approve on paper is the home you walk into.</p>
+        <button onClick="{{ goServices }}" style="background:none;border:0;border-bottom:1px solid #5C5C5C;padding:0 0 6px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5C5C5C;cursor:pointer" style-hover="color:#000000;border-color:#000000">All services</button>
+      </div>
+      <div data-reveal="" style="display:flex;flex-direction:column">
+        <sc-for list="{{ servicesTop }}" as="sv" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:16px;padding:28px 0;border-top:1px solid #D0D0D0">
+            <span style="font-size:11px;letter-spacing:0.2em;color:#5C5C5C;padding-top:8px">{{ sv.num }}</span>
+            <div>
+              <h3 style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:28px">{{ sv.title }}</h3>
+              <p style="margin:0;font-size:15px;line-height:1.7;color:#444444">{{ sv.short }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1440px;margin:0 auto;padding:clamp(80px,10vw,160px) clamp(20px,5vw,72px)">
+    <div data-reveal="" style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:56px">
+      <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4.5vw,64px);line-height:1">How we work</h2>
+      <button onClick="{{ goProcess }}" style="background:none;border:0;padding:0;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5C5C5C;cursor:pointer" style-hover="color:#000000">The full process →</button>
+    </div>
+    <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:0">
+      <sc-for list="{{ process }}" as="st" hint-placeholder-count="6">
+        <div style="border-top:1px solid #000000;padding:24px 20px 0 0">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:#5C5C5C;line-height:1;margin-bottom:20px">{{ st.num }}</div>
+          <div style="font-size:15px;font-weight:400;line-height:1.4;margin-bottom:8px">{{ st.title }}</div>
+          <div style="font-size:13px;color:#6B6B6B;letter-spacing:0.04em">{{ st.time }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-reveal="" style="border-top:1px solid #DDDDDD;border-bottom:1px solid #DDDDDD;padding:48px clamp(20px,5vw,72px)">
+    <div style="max-width:1440px;margin:0 auto;display:flex;align-items:center;gap:32px 56px;flex-wrap:wrap;justify-content:space-between">
+      <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#6B6B6B">As featured in</div>
+      <sc-for list="{{ press }}" as="pr" hint-placeholder-count="5">
+        <div style="position:relative;width:140px;height:44px">
+          <image-slot id="{{ pr.id }}" shape="rect" fit="contain" placeholder="Publication logo" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1200px;margin:0 auto;padding:clamp(96px,12vw,180px) clamp(20px,5vw,72px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(56px,8vw,120px)">
+      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="2">
+        <figure data-reveal="" style="margin:0">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:80px;line-height:0.6;color:#5C5C5C;height:36px">“</div>
+          <blockquote style="margin:0 0 28px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(24px,2.6vw,34px);line-height:1.3;text-wrap:pretty">{{ t.quote }}</blockquote>
+          <figcaption style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#6B6B6B">{{ t.who }} — {{ t.project }}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:0 clamp(20px,5vw,72px) clamp(80px,10vw,140px);max-width:1440px;margin:0 auto">
+    <div data-reveal="" style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:32px">
+      <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C">From the studio</div>
+      <a href="https://instagram.com/[vsminnovators]" style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#000000">@vsminnovators</a>
+    </div>
+    <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:8px">
+      <sc-for list="{{ insta }}" as="ig" hint-placeholder-count="6">
+        <div style="position:relative;aspect-ratio:1;background:#EEEEEE">
+          <image-slot id="{{ ig.id }}" shape="rect" placeholder="{{ ig.alt }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ============ PORTFOLIO ============ -->
+<sc-if value="{{ isPortfolio }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Portfolio" style="max-width:1440px;margin:0 auto;padding:clamp(72px,10vw,140px) clamp(20px,5vw,72px) clamp(80px,10vw,160px)">
+    <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:24px">Portfolio</div>
+    <h1 style="margin:0 0 56px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(52px,8vw,120px);line-height:0.95;letter-spacing:-0.01em">The work.</h1>
+    <div role="tablist" style="display:flex;gap:8px 32px;flex-wrap:wrap;border-bottom:1px solid #DDDDDD;margin-bottom:56px">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+        <button onClick="{{ f.go }}" style="background:none;border:0;border-bottom:1px solid {{ f.line }};margin-bottom:-1px;padding:14px 0;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:{{ f.color }};cursor:pointer;white-space:nowrap" style-hover="color:#5C5C5C">{{ f.label }} <span style="color:#5C5C5C;margin-left:4px">{{ f.count }}</span></button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,5vw,72px) clamp(24px,4vw,56px);align-items:start">
+      <sc-for list="{{ visibleProjects }}" as="p" hint-placeholder-count="2">
+        <article onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ leaveTile }}" style="cursor:pointer;margin-top:{{ p.offset }}">
+          <div style="position:relative;aspect-ratio:4/5;background:#EEEEEE;overflow:hidden">
+            <image-slot id="{{ p.gridId }}" shape="rect" placeholder="{{ p.coverAlt }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+            <div style="position:absolute;inset:auto 0 0 0;background:rgba(17,17,17,0.88);color:#FFFFFF;padding:28px;opacity:{{ p.hoverOp }};transform:translateY({{ p.hoverY }});transition:opacity .6s ease, transform .6s ease;pointer-events:none">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;margin-bottom:6px">{{ p.name }}</div>
+              <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase">{{ p.location }} · {{ p.type }}</div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:12px;margin-top:16px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6B6B6B;flex-wrap:wrap"><span style="color:#000000">{{ p.name }}</span><span>{{ p.year }}</span></div>
+        </article>
+      </sc-for>
+    </div>
+    <sc-if value="{{ noProjects }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:64px 0;max-width:560px">
+        <p style="margin:0 0 24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:32px;line-height:1.3">Our first {{ filterLower }} commissions are in the studio now.</p>
+        <button onClick="{{ goContact }}" style="background:none;border:0;border-bottom:1px solid #5C5C5C;padding:0 0 6px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5C5C5C;cursor:pointer">Discuss a project</button>
+      </div>
+    </sc-if>
+  </section>
+</sc-if>
+
+<!-- ============ CASE STUDY ============ -->
+<sc-if value="{{ isProject }}" hint-placeholder-val="{{ false }}">
+  <sc-for list="{{ projects }}" as="p" hint-placeholder-count="0">
+    <sc-if value="{{ p.active }}" hint-placeholder-val="{{ false }}">
+      <article data-screen-label="Case Study">
+        <div style="position:relative;height:calc(88svh - 72px);min-height:480px;background:#EEEEEE">
+          <image-slot id="{{ p.heroId }}" shape="rect" placeholder="{{ p.heroAlt }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+        </div>
+        <section style="max-width:1440px;margin:0 auto;padding:clamp(56px,8vw,112px) clamp(20px,5vw,72px) 0">
+          <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:20px">{{ p.type }}</div>
+          <h1 style="margin:0 0 56px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,7.5vw,112px);line-height:0.98;letter-spacing:-0.01em;text-wrap:balance">{{ p.name }}</h1>
+          <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));border-top:1px solid #000000">
+            <sc-for list="{{ p.facts }}" as="fc" hint-placeholder-count="4">
+              <div style="padding:20px 20px 0 0">
+                <dt style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#6B6B6B;margin-bottom:8px">{{ fc.k }}</dt>
+                <dd style="margin:0;font-size:16px;line-height:1.5">{{ fc.v }}</dd>
+              </div>
+            </sc-for>
+          </dl>
+        </section>
+        <section data-reveal="" style="max-width:1440px;margin:0 auto;padding:clamp(80px,10vw,150px) clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(48px,7vw,112px)">
+          <div>
+            <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:20px">The brief</div>
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,2.8vw,38px);line-height:1.3;text-wrap:pretty">{{ p.brief }}</p>
+          </div>
+          <div>
+            <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:20px">The approach</div>
+            <p style="margin:0 0 36px;font-size:15px;line-height:1.8;color:#444444">{{ p.approach }}</p>
+            <div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#6B6B6B;margin-bottom:14px">Materials</div>
+            <p style="margin:0 0 32px;font-size:15px;line-height:1.8">{{ p.materials }}</p>
+            <div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#6B6B6B;margin-bottom:14px">Palette</div>
+            <div style="display:flex;gap:16px;flex-wrap:wrap">
+              <sc-for list="{{ p.palette }}" as="c" hint-placeholder-count="5">
+                <div style="display:flex;flex-direction:column;gap:8px;width:72px">
+                  <div style="width:72px;height:72px;background:{{ c.hex }}"></div>
+                  <span style="font-size:12px;line-height:1.3;color:#444444">{{ c.name }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </section>
+        <sc-for list="{{ p.rooms }}" as="r" hint-placeholder-count="3">
+          <section style="padding:0 clamp(20px,5vw,72px) clamp(80px,10vw,150px);max-width:1440px;margin:0 auto">
+            <div data-reveal="" style="position:relative;aspect-ratio:16/9;background:#EEEEEE;margin-bottom:clamp(32px,4vw,56px)">
+              <image-slot id="{{ r.wideId }}" shape="rect" placeholder="{{ r.wideAlt }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);align-items:flex-start">
+              <div data-reveal="" style="flex:1 1 280px;max-width:420px;padding-top:12px">
+                <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:16px">{{ r.num }} — {{ r.room }}</div>
+                <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.4;font-weight:300">{{ r.text }}</p>
+              </div>
+              <div data-reveal="" style="flex:1 1 260px;position:relative;aspect-ratio:3/4;background:#EEEEEE">
+                <image-slot id="{{ r.d1Id }}" shape="rect" placeholder="{{ r.d1Alt }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+              </div>
+              <div data-reveal="" style="flex:1 1 220px;position:relative;aspect-ratio:4/5;background:#EEEEEE;margin-top:clamp(0px,8vw,120px)">
+                <image-slot id="{{ r.d2Id }}" shape="rect" placeholder="{{ r.d2Alt }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+              </div>
+            </div>
+          </section>
+        </sc-for>
+        <section style="background:#F5F5F5;padding:clamp(80px,10vw,150px) clamp(20px,5vw,72px)">
+          <div style="max-width:1440px;margin:0 auto">
+            <div data-reveal="" style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:20px">Concept to completion</div>
+            <h2 data-reveal="" style="margin:0 0 56px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4.5vw,64px);line-height:1">From paper to place.</h2>
+            <div style="display:flex;flex-direction:column;gap:clamp(48px,6vw,88px)">
+              <sc-for list="{{ p.compare }}" as="cp" hint-placeholder-count="2">
+                <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px">
+                  <figure style="margin:0">
+                    <div style="position:relative;aspect-ratio:4/3;background:#DCDCDC"><image-slot id="{{ cp.aId }}" shape="rect" placeholder="{{ cp.aLabel }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+                    <figcaption style="margin-top:12px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6B6B6B">{{ cp.aLabel }}</figcaption>
+                  </figure>
+                  <figure style="margin:0">
+                    <div style="position:relative;aspect-ratio:4/3;background:#DCDCDC"><image-slot id="{{ cp.bId }}" shape="rect" placeholder="{{ cp.bLabel }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+                    <figcaption style="margin-top:12px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#000000">{{ cp.bLabel }}</figcaption>
+                  </figure>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </section>
+        <section data-reveal="" style="max-width:1000px;margin:0 auto;padding:clamp(96px,12vw,180px) clamp(20px,5vw,72px);text-align:center">
+          <blockquote style="margin:0 0 28px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(30px,3.6vw,50px);line-height:1.25;text-wrap:balance">“{{ p.quote }}”</blockquote>
+          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#6B6B6B">{{ p.client }}</div>
+        </section>
+        <nav style="border-top:1px solid #DDDDDD;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))">
+          <button onClick="{{ p.prev.open }}" style="background:none;border:0;cursor:pointer;text-align:left;padding:48px clamp(20px,5vw,72px);color:#000000;transition:background .5s" style-hover="background:#F5F5F5">
+            <div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#5C5C5C;margin-bottom:12px">← Previous project</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,40px);font-weight:300">{{ p.prev.name }}</div>
+          </button>
+          <button onClick="{{ p.next.open }}" style="background:none;border:0;border-left:1px solid #DDDDDD;cursor:pointer;text-align:right;padding:48px clamp(20px,5vw,72px);color:#000000;transition:background .5s" style-hover="background:#F5F5F5">
+            <div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#5C5C5C;margin-bottom:12px">Next project →</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,40px);font-weight:300">{{ p.next.name }}</div>
+          </button>
+        </nav>
+      </article>
+    </sc-if>
+  </sc-for>
+</sc-if>
+
+<!-- ============ ABOUT ============ -->
+<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="About">
+    <section style="max-width:1440px;margin:0 auto;padding:clamp(72px,10vw,140px) clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;gap:clamp(48px,7vw,112px);align-items:flex-end">
+      <div style="flex:1 1 420px">
+        <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:24px">The Studio</div>
+        <h1 style="margin:0 0 40px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,7vw,104px);line-height:0.98;letter-spacing:-0.01em;text-wrap:balance">Rooted in Punjab. Made for now.</h1>
+        <p style="margin:0 0 20px;font-size:15px;line-height:1.8;color:#444444;max-width:520px">vSM Innovators was founded by [Founder Name] on a simple conviction: that a home in Jalandhar, Ludhiana or Amritsar deserves the same rigour as any address in the world — and should still feel unmistakably of this place.</p>
+        <p style="margin:0;font-size:15px;line-height:1.8;color:#444444;max-width:520px">[Two or three lines on the founder’s training, the path to starting the studio, and what still drives the work.]</p>
+      </div>
+      <div style="flex:1 1 360px;position:relative;aspect-ratio:4/5;background:#EEEEEE">
+        <image-slot id="about-founder" shape="rect" placeholder="Portrait of the founder in the studio, natural light" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      </div>
+    </section>
+    <section style="background:#000000;color:#FFFFFF;padding:clamp(88px,12vw,180px) clamp(20px,5vw,72px)">
+      <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(40px,5vw,72px)">
+        <sc-for list="{{ beliefs }}" as="b" hint-placeholder-count="3">
+          <div data-reveal="" style="border-top:1px solid #444444;padding-top:28px">
+            <h3 style="margin:0 0 16px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:36px;line-height:1.1">{{ b.title }}</h3>
+            <p style="margin:0;font-size:16px;line-height:1.8;color:#DDDDDD">{{ b.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="max-width:1440px;margin:0 auto;padding:clamp(88px,12vw,160px) clamp(20px,5vw,72px)">
+      <h2 data-reveal="" style="margin:0 0 48px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4.5vw,64px);line-height:1">Inside the studio</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(20px,3vw,40px)">
+        <sc-for list="{{ studioShots }}" as="ss" hint-placeholder-count="3">
+          <figure data-reveal="" style="margin:0">
+            <div style="position:relative;aspect-ratio:{{ ss.ratio }};background:#EEEEEE"><image-slot id="{{ ss.id }}" shape="rect" placeholder="{{ ss.alt }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+            <figcaption style="margin-top:14px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6B6B6B">{{ ss.caption }}</figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </section>
+    <section style="background:#F5F5F5;padding:clamp(80px,10vw,150px) clamp(20px,5vw,72px)">
+      <div style="max-width:1440px;margin:0 auto">
+        <h2 data-reveal="" style="margin:0 0 48px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4.5vw,64px);line-height:1">The team</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(24px,3vw,40px)">
+          <sc-for list="{{ team }}" as="tm" hint-placeholder-count="3">
+            <div data-reveal="">
+              <div style="position:relative;aspect-ratio:3/4;background:#DCDCDC;margin-bottom:16px"><image-slot id="{{ tm.id }}" shape="rect" placeholder="Team portrait" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:26px">{{ tm.name }}</div>
+              <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6B6B6B;margin-top:4px">{{ tm.role }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="max-width:1440px;margin:0 auto;padding:clamp(80px,10vw,150px) clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(48px,6vw,96px)">
+      <div data-reveal="">
+        <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:24px">Recognition &amp; press</div>
+        <sc-for list="{{ awards }}" as="aw" hint-placeholder-count="3">
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:20px 0;border-top:1px solid #DDDDDD;font-size:16px"><span>{{ aw.t }}</span><span style="color:#6B6B6B">{{ aw.y }}</span></div>
+        </sc-for>
+      </div>
+      <div data-reveal="">
+        <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:24px">Craft collaborators</div>
+        <sc-for list="{{ collaborators }}" as="cl" hint-placeholder-count="4">
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:20px 0;border-top:1px solid #DDDDDD;font-size:16px"><span>{{ cl.t }}</span><span style="color:#6B6B6B">{{ cl.y }}</span></div>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+</sc-if>
+
+<!-- ============ SERVICES ============ -->
+<sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Services">
+    <section style="max-width:1440px;margin:0 auto;padding:clamp(72px,10vw,140px) clamp(20px,5vw,72px) clamp(48px,6vw,80px)">
+      <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:24px">Services</div>
+      <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,7vw,104px);line-height:0.98;letter-spacing:-0.01em;max-width:1000px;text-wrap:balance">One studio, from first conversation to final styling.</h1>
+    </section>
+    <section style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,5vw,72px) clamp(80px,10vw,150px)">
+      <sc-for list="{{ services }}" as="sv" hint-placeholder-count="8">
+        <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px 48px;padding:36px 0;border-top:1px solid #DDDDDD">
+          <div style="display:flex;gap:24px;align-items:baseline">
+            <span style="font-size:11px;letter-spacing:0.2em;color:#5C5C5C">{{ sv.num }}</span>
+            <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(28px,3vw,38px);line-height:1.1">{{ sv.title }}</h2>
+          </div>
+          <div>
+            <p style="margin:0 0 12px;font-size:15px;line-height:1.75;color:#444444">{{ sv.desc }}</p>
+            <p style="margin:0;font-size:13px;letter-spacing:0.06em;color:#6B6B6B">Includes — {{ sv.includes }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </section>
+    <section style="background:#F5F5F5;padding:clamp(80px,10vw,150px) clamp(20px,5vw,72px)">
+      <div style="max-width:1440px;margin:0 auto">
+        <div data-reveal="" style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:20px">Fees &amp; engagement</div>
+        <h2 data-reveal="" style="margin:0 0 20px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4.5vw,64px);line-height:1">Clear from the start.</h2>
+        <p data-reveal="" style="margin:0 0 56px;font-size:15px;line-height:1.75;color:#444444;max-width:620px">Every commission begins with a written proposal: scope, fee, payment stages and timeline, agreed before design work starts. No surprises, and no commissions taken on materials we specify.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(24px,3vw,40px)">
+          <sc-for list="{{ fees }}" as="fe" hint-placeholder-count="3">
+            <div data-reveal="" style="background:#FFFFFF;padding:36px">
+              <h3 style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:30px">{{ fe.title }}</h3>
+              <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#5C5C5C;margin-bottom:20px">{{ fe.basis }}</div>
+              <p style="margin:0;font-size:15px;line-height:1.75;color:#444444">{{ fe.text }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </div>
+</sc-if>
+
+<!-- ============ PROCESS ============ -->
+<sc-if value="{{ isProcess }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Process">
+    <section style="max-width:1440px;margin:0 auto;padding:clamp(72px,10vw,140px) clamp(20px,5vw,72px) clamp(48px,6vw,96px)">
+      <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:24px">Process</div>
+      <h1 style="margin:0 0 32px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,7vw,104px);line-height:0.98;letter-spacing:-0.01em;max-width:980px;text-wrap:balance">Six stages. One unhurried rhythm.</h1>
+      <p style="margin:0;font-size:15px;line-height:1.75;color:#444444;max-width:560px">A full home typically takes eight to fourteen months from first meeting to handover. Timelines below are indicative and are fixed in your proposal.</p>
+    </section>
+    <section style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,5vw,72px) clamp(80px,10vw,150px)">
+      <sc-for list="{{ process }}" as="st" hint-placeholder-count="6">
+        <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px clamp(32px,5vw,80px);padding:clamp(40px,5vw,64px) 0;border-top:1px solid #000000;align-items:start">
+          <div style="display:flex;gap:24px;align-items:baseline">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(56px,6vw,88px);font-weight:300;color:#5C5C5C;line-height:0.9">{{ st.num }}</span>
+            <div>
+              <h2 style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(26px,2.6vw,34px);line-height:1.1">{{ st.title }}</h2>
+              <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6B6B6B">{{ st.time }}</div>
+            </div>
+          </div>
+          <p style="margin:0;font-size:15px;line-height:1.75;color:#444444">{{ st.desc }}</p>
+          <div style="position:relative;aspect-ratio:3/2;background:#EEEEEE"><image-slot id="{{ st.id }}" shape="rect" placeholder="{{ st.alt }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+        </div>
+      </sc-for>
+    </section>
+  </div>
+</sc-if>
+
+<!-- ============ JOURNAL ============ -->
+<sc-if value="{{ isJournal }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Journal" style="max-width:1440px;margin:0 auto;padding:clamp(72px,10vw,140px) clamp(20px,5vw,72px) clamp(80px,10vw,160px)">
+    <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:24px">Journal</div>
+    <h1 style="margin:0 0 72px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(52px,8vw,120px);line-height:0.95;letter-spacing:-0.01em">Notes on material &amp; light.</h1>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(40px,5vw,64px) clamp(24px,3vw,48px)">
+      <sc-for list="{{ journal }}" as="j" hint-placeholder-count="3">
+        <article data-reveal="" style="cursor:pointer">
+          <div style="position:relative;aspect-ratio:4/5;background:#EEEEEE;margin-bottom:24px"><image-slot id="{{ j.id }}" shape="rect" placeholder="{{ j.alt }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+          <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#5C5C5C;margin-bottom:12px">{{ j.cat }} · {{ j.read }}</div>
+          <h2 style="margin:0 0 12px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:32px;line-height:1.15" style-hover="color:#5C5C5C">{{ j.title }}</h2>
+          <p style="margin:0;font-size:15px;line-height:1.75;color:#444444">{{ j.dek }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ============ CONTACT ============ -->
+<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Contact" style="max-width:1440px;margin:0 auto;padding:clamp(72px,10vw,140px) clamp(20px,5vw,72px) clamp(80px,10vw,150px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(56px,8vw,128px)">
+    <div>
+      <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#5C5C5C;margin-bottom:24px">Book a consultation</div>
+      <h1 style="margin:0 0 24px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,6.5vw,96px);line-height:0.98;letter-spacing:-0.01em">Tell us about the space.</h1>
+      <p style="margin:0 0 48px;font-size:15px;line-height:1.75;color:#444444;max-width:480px">We take on a small number of homes each year. Share a few details and we’ll reply within two working days to arrange a first conversation.</p>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="border-top:1px solid #000000;padding-top:32px">
+          <p style="margin:0 0 12px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;line-height:1.25">Thank you. Your enquiry is with us.</p>
+          <p style="margin:0;font-size:16px;color:#444444">Expect a call or WhatsApp message from the studio shortly.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px 32px">
+          <sc-for list="{{ fields }}" as="fl" hint-placeholder-count="6">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#6B6B6B">{{ fl.label }}
+              <input name="{{ fl.name }}" type="{{ fl.type }}" required="{{ fl.required }}" placeholder="{{ fl.ph }}" style="border:0;border-bottom:1px solid #B5B5B5;background:transparent;padding:10px 0;font-size:16px;letter-spacing:0;text-transform:none;color:#000000;outline:none;font-weight:300" style-focus="border-bottom-color:#5C5C5C">
+            </label>
+          </sc-for>
+          <sc-for list="{{ selects }}" as="se" hint-placeholder-count="3">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#6B6B6B">{{ se.label }}
+              <select name="{{ se.name }}" style="border:0;border-bottom:1px solid #B5B5B5;background:transparent;padding:10px 0;font-size:16px;letter-spacing:0;text-transform:none;color:#000000;outline:none;font-weight:300;border-radius:0">
+                <sc-for list="{{ se.options }}" as="o" hint-placeholder-count="4"><option>{{ o }}</option></sc-for>
+              </select>
+            </label>
+          </sc-for>
+          <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#6B6B6B">Message
+            <textarea name="message" rows="4" placeholder="What are you hoping the space will feel like?" style="border:0;border-bottom:1px solid #B5B5B5;background:transparent;padding:10px 0;font-size:16px;letter-spacing:0;text-transform:none;color:#000000;outline:none;resize:vertical;font-weight:300"></textarea>
+          </label>
+          <div style="grid-column:1/-1">
+            <button type="submit" style="background:#000000;color:#FFFFFF;border:0;padding:18px 36px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:background .4s" style-hover="background:#444444">Request a consultation</button>
+          </div>
+        </form>
+      </sc-if>
+    </div>
+    <aside style="display:flex;flex-direction:column;gap:40px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px">
+        <a href="https://wa.me/[91XXXXXXXXXX]" style="display:flex;justify-content:space-between;align-items:center;padding:24px;background:#000000;color:#FFFFFF;font-size:11px;letter-spacing:0.18em;text-transform:uppercase" style-hover="background:#000000;color:#FFFFFF">WhatsApp <span>→</span></a>
+        <a href="tel:[+91XXXXXXXXXX]" style="display:flex;justify-content:space-between;align-items:center;padding:24px;border:1px solid #000000;color:#000000;font-size:11px;letter-spacing:0.18em;text-transform:uppercase" style-hover="background:#F5F5F5;color:#000000">Call the studio <span>→</span></a>
+      </div>
+      <div style="position:relative;aspect-ratio:4/3;background:#EEEEEE"><image-slot id="contact-map" shape="rect" placeholder="Studio location map — Jalandhar" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:32px;font-size:15px;line-height:1.75;color:#444444">
+        <div><div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#5C5C5C;margin-bottom:10px">Studio</div>[Studio address]<br>Jalandhar, Punjab [PIN]<br>Visits by appointment</div>
+        <div><div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#5C5C5C;margin-bottom:10px">Working across</div>Jalandhar · Ludhiana · Amritsar<br>[hello@vsminnovators.com]<br>[+91 XXXXX XXXXX]</div>
+      </div>
+    </aside>
+  </section>
+</sc-if>
+
+<sc-if value="{{ notContact }}" hint-placeholder-val="{{ true }}">
+  <section style="background:#000000;color:#FFFFFF;padding:clamp(96px,12vw,180px) clamp(20px,5vw,72px);text-align:center">
+    <div data-reveal="" style="max-width:900px;margin:0 auto">
+      <div style="font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:#BDBDBD;margin-bottom:28px">Begin a conversation</div>
+      <h2 style="margin:0 0 44px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(42px,6vw,88px);line-height:1;text-wrap:balance">Every home starts with a quiet hour of listening.</h2>
+      <button onClick="{{ goContact }}" style="background:#FFFFFF;color:#000000;border:0;padding:18px 36px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:all .4s" style-hover="background:#BDBDBD">Book a Consultation</button>
+    </div>
+  </section>
+</sc-if>
+</main>
+
+<footer style="background:#0A0A0A;color:#DDDDDD;padding:72px clamp(20px,5vw,72px) 40px">
+  <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:48px">
+    <div>
+      <div style="display:flex;align-items:baseline;gap:10px;color:#FFFFFF;margin-bottom:16px"><span style="font-family:'Cormorant Garamond',serif;font-size:34px">vSM</span><span style="font-size:11px;letter-spacing:0.32em;text-transform:uppercase">Innovators</span></div>
+      <p style="margin:0;font-size:14px;line-height:1.75;max-width:280px">Luxury interior design for residences, villas and farmhouses in Jalandhar, Ludhiana and Amritsar.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+      <sc-for list="{{ nav }}" as="item" hint-placeholder-count="7">
+        <button onClick="{{ item.go }}" style="background:none;border:0;padding:0;cursor:pointer;color:#DDDDDD;font-size:14px" style-hover="color:#FFFFFF">{{ item.label }}</button>
+      </sc-for>
+    </div>
+    <div style="font-size:14px;line-height:1.9">[Studio address]<br>Jalandhar, Punjab<br>[+91 XXXXX XXXXX]<br>[hello@vsminnovators.com]</div>
+  </div>
+  <div style="max-width:1440px;margin:56px auto 0;padding-top:24px;border-top:1px solid #2E2E2E;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11px;letter-spacing:0.08em;color:#9A9A9A">
+    <span>© 2026 vSM Innovators</span><span>Interior designer · Jalandhar · Ludhiana · Amritsar</span>
+  </div>
+</footer>
+
+<div style="position:fixed;right:clamp(12px,2vw,28px);bottom:clamp(12px,2vw,28px);z-index:60;display:flex;gap:10px;align-items:center;opacity:{{ floatOp }};pointer-events:{{ floatPe }};transition:opacity .6s ease">
+  <sc-if value="{{ notContact }}" hint-placeholder-val="{{ true }}">
+    <button onClick="{{ goContact }}" style="background:#000000;color:#FFFFFF;border:0;padding:0 22px;height:52px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:background .4s" style-hover="background:#444444">Book a Consultation</button>
+  </sc-if>
+  <a href="https://wa.me/[91XXXXXXXXXX]" aria-label="Chat on WhatsApp" style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:#000000;color:#FFFFFF;font-size:11px;letter-spacing:0.08em" style-hover="background:#444444;color:#FFFFFF">WA</a>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = (() => {
+    let s = {};
+    try { s = JSON.parse(localStorage.getItem('vsm-nav') || '{}'); } catch (e) {}
+    return { page: s.page || 'home', proj: s.proj || 0, menu: false, slide: 0, filter: 'All', hover: null, sent: false };
+  })();
+
+  componentDidMount() {
+    this.timer = setInterval(() => this.setState(s => ({ slide: (s.slide + 1) % 3 })), 6500);
+    this.observe();
+    this.onScroll = () => { const past = window.scrollY > window.innerHeight * 0.7; if (past !== this.state.past) this.setState({ past }); };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+  }
+  componentWillUnmount() { clearInterval(this.timer); window.removeEventListener('scroll', this.onScroll); this.io && this.io.disconnect(); }
+  componentDidUpdate(_, prev) {
+    if (prev.page !== this.state.page || prev.proj !== this.state.proj || prev.filter !== this.state.filter || prev.sent !== this.state.sent) {
+      try { localStorage.setItem('vsm-nav', JSON.stringify({ page: this.state.page, proj: this.state.proj })); } catch (e) {}
+      requestAnimationFrame(() => this.observe());
+    }
+  }
+  observe() {
+    if (!('IntersectionObserver' in window)) return;
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) return;
+      el.style.opacity = 0; el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 1.4s ease, transform 1.4s cubic-bezier(.2,.7,.2,1)';
+      this.io.observe(el);
+    });
+  }
+  go(page, extra) {
+    this.setState({ page, menu: false, hover: null, ...(extra || {}) });
+    window.scrollTo(0, 0);
+  }
+
+  data() {
+    const projects = [
+      {
+        slug: 'haveli', name: 'Haveli Lane Residence', location: 'Jalandhar', type: 'Residential', size: '6,400 sq ft', year: '2025',
+        scope: 'Full-service design, turnkey execution, furniture & art curation',
+        coverAlt: 'Haveli Lane Residence — double-height living room with lime-plaster walls and brass jaali screen, Jalandhar',
+        brief: 'A family of three generations wanted one house that could hold both: the courtyard gatherings of their childhood and the quiet, private rooms of contemporary life.',
+        approach: 'We organised the plan around a sky-lit inner court, letting every room borrow its light. Traditional elements — jaali, chowkat doorframes, terrazzo floors — were redrawn with cleaner proportions, so the house reads as heritage without becoming a period piece.',
+        materials: 'Lime plaster, Jaisalmer and Kota stone, reclaimed sheesham, hand-beaten brass, khadi and handloom linen.',
+        palette: [{ name: 'Lime white', hex: '#EDE6DA' }, { name: 'Jaisalmer', hex: '#D4B483' }, { name: 'Kota grey', hex: '#7E8377' }, { name: 'Sheesham', hex: '#5B3A26' }, { name: 'Brass', hex: '#A8834A' }],
+        rooms: [
+          { room: 'The Court', text: 'A sky-lit court at the centre of the house — the place every morning begins and every festival ends.', wideAlt: 'Wide view of the inner courtyard with terrazzo floor and skylight', d1Alt: 'Detail: brass jaali casting patterned light', d2Alt: 'Detail: hand-finished lime plaster texture' },
+          { room: 'Living & Dining', text: 'Low seating, deep window seats and a twelve-seat table cut from a single slab of reclaimed sheesham.', wideAlt: 'Living and dining room, warm afternoon light', d1Alt: 'Detail: sheesham dining table joinery', d2Alt: 'Detail: handloom linen upholstery' },
+          { room: 'Principal Suite', text: 'Stillness above all: Kota stone, soft linen and a single framed view of the garden neem.', wideAlt: 'Principal bedroom with Kota stone floor and garden view', d1Alt: 'Detail: carved chowkat door frame', d2Alt: 'Detail: brass bedside lamp' }
+        ],
+        compare: [{ a: 'Material moodboard', b: 'Completed living room' }, { a: '3D visualisation — courtyard', b: 'Completed courtyard' }],
+        quote: 'They listened to three generations and somehow built one house we all recognise as ours.', client: 'The S. family, Jalandhar'
+      },
+      {
+        slug: 'orchard', name: 'The Orchard Farmhouse', location: 'Ludhiana', type: 'Villa / Farmhouse', size: '11,500 sq ft', year: '2024',
+        scope: 'Interior architecture, custom furniture, landscape-facing pavilions, styling',
+        coverAlt: 'The Orchard Farmhouse — verandah opening onto a guava orchard, Ludhiana',
+        brief: 'A weekend farmhouse among guava orchards, built for long lunches and large gatherings — open to the land, yet comfortable through Punjab’s winters.',
+        approach: 'Deep verandahs and folding timber screens blur the line between house and orchard. Inside, warm stone, rammed-earth walls and fireplaces of hand-cut sandstone keep the rooms generous in scale but intimate in feeling.',
+        materials: 'Rammed earth, Dholpur sandstone, teak, cane, block-printed cotton, aged brass.',
+        palette: [{ name: 'Earth', hex: '#B08968' }, { name: 'Dholpur', hex: '#D9C2A0' }, { name: 'Orchard', hex: '#6E7553' }, { name: 'Teak', hex: '#7A4E2D' }, { name: 'Cane', hex: '#CDB38B' }],
+        rooms: [
+          { room: 'The Verandah', text: 'Thirty metres of shaded verandah, where lunch runs into dusk and the orchard does the decorating.', wideAlt: 'Long verandah with cane furniture overlooking the orchard', d1Alt: 'Detail: folding teak screen hardware', d2Alt: 'Detail: block-printed cushions on cane daybed' },
+          { room: 'The Great Room', text: 'A double-height hall warmed by a sandstone hearth, scaled for forty guests yet calm for two.', wideAlt: 'Great room with sandstone fireplace and rammed-earth walls', d1Alt: 'Detail: rammed-earth wall strata', d2Alt: 'Detail: aged brass pendant lighting' },
+          { room: 'Guest Pavilions', text: 'Four pavilions set among the trees, each with its own garden bath and morning light.', wideAlt: 'Guest pavilion bedroom with orchard view', d1Alt: 'Detail: stone garden bath', d2Alt: 'Detail: hand-woven bed throw' }
+        ],
+        compare: [{ a: 'Concept sketch — verandah', b: 'Completed verandah' }, { a: '3D visualisation — great room', b: 'Completed great room' }],
+        quote: 'It feels as if the house has always stood in the orchard. That was exactly what we hoped for.', client: 'Mr & Mrs K., Ludhiana'
+      }
+    ];
+    return projects.map((p, i) => ({
+      ...p, index: i,
+      heroId: `${p.slug}-hero`, gridId: `pf-${p.slug}`, heroAlt: p.coverAlt,
+      facts: [{ k: 'Location', v: p.location + ', Punjab' }, { k: 'Size', v: p.size }, { k: 'Scope', v: p.scope }, { k: 'Year', v: p.year }],
+      rooms: p.rooms.map((r, j) => ({ ...r, num: String(j + 1).padStart(2, '0'), wideId: `${p.slug}-r${j}-wide`, d1Id: `${p.slug}-r${j}-d1`, d2Id: `${p.slug}-r${j}-d2` })),
+      compare: p.compare.map((c, j) => ({ aLabel: c.a, bLabel: c.b, aId: `${p.slug}-c${j}-a`, bId: `${p.slug}-c${j}-b` }))
+    }));
+  }
+
+  renderVals() {
+    const s = this.state;
+    const nav = [['Home', 'home'], ['Portfolio', 'portfolio'], ['Studio', 'about'], ['Services', 'services'], ['Process', 'process'], ['Journal', 'journal'], ['Contact', 'contact']]
+      .map(([label, key], i) => ({ label, num: String(i + 1).padStart(2, '0'), go: () => this.go(key) }));
+    const raw = this.data();
+    const open = i => () => this.go('project', { proj: i });
+    const projects = raw.map((p, i) => {
+      const n = raw.length;
+      const prev = raw[(i - 1 + n) % n], next = raw[(i + 1) % n];
+      return {
+        ...p, active: s.proj === i, open: open(i),
+        enter: () => this.setState({ hover: i }),
+        hoverOp: s.hover === i ? 1 : 0, hoverY: s.hover === i ? '0' : '12px',
+        offset: i % 2 === 1 ? 'clamp(0px, 10vw, 160px)' : '0',
+        prev: { name: prev.name, open: open(prev.index) }, next: { name: next.name, open: open(next.index) }
+      };
+    });
+    const types = ['All', 'Residential', 'Penthouse', 'Villa / Farmhouse', 'Commercial', 'Hospitality'];
+    const filters = types.map(t => {
+      const count = t === 'All' ? projects.length : projects.filter(p => p.type === t).length;
+      return { label: t, count: String(count).padStart(2, '0'), go: () => this.setState({ filter: t }), color: s.filter === t ? '#000000' : '#6B6B6B', line: s.filter === t ? '#5C5C5C' : 'transparent' };
+    });
+    const visibleProjects = projects.filter(p => s.filter === 'All' || p.type === s.filter);
+
+    const heroAlts = ['Signature living room, Haveli Lane Residence — wide, morning light', 'Orchard Farmhouse verandah at dusk', 'Detail: brass jaali and lime plaster in raking light'];
+    const heroSlides = heroAlts.map((alt, i) => ({ id: `hero-${i}`, alt, opacity: s.slide === i ? 1 : 0, scale: s.slide === i ? 1 : 1.06, dot: s.slide === i ? '#000000' : '#B5B5B5', go: () => this.setState({ slide: i }) }));
+
+    const services = [
+      ['Full-service interior design', 'Complete design of every room — layouts, finishes, lighting, furniture and art — documented to the last detail.', 'concept, drawings, 3D views, specifications'],
+      ['Turnkey execution', 'We manage contractors, craftspeople and vendors on site, and hand over a finished, styled home.', 'site management, procurement, quality control, handover'],
+      ['Design consultation', 'Focused sessions for those planning a build or refresh who want an expert eye on direction and decisions.', 'site visit, recommendations, material direction'],
+      ['Space planning', 'Plans that organise how a home is lived in — light, movement, privacy and proportion.', 'measured survey, layout options, furniture plans'],
+      ['Furniture & art curation', 'Pieces sourced from Indian makers, galleries and select international studios, chosen for each room.', 'sourcing, art advisory, installation'],
+      ['Custom furniture', 'Pieces designed in the studio and made by hand with workshops across Punjab and Rajasthan.', 'design, prototyping, workshop supervision'],
+      ['Renovation', 'Careful transformation of existing homes and heritage properties, keeping what deserves to stay.', 'assessment, redesign, phased execution'],
+      ['Styling', 'The final layer: textiles, objects, books and flowers that make a finished house feel inhabited.', 'styling, photography preparation, seasonal refresh']
+    ].map(([title, desc, includes], i) => ({ num: String(i + 1).padStart(2, '0'), title, desc, includes, short: desc }));
+
+    const process = [
+      ['Discovery', '1–2 weeks', 'We visit the site, listen to how you live, and agree scope, budget and timeline in a written proposal.'],
+      ['Concept & moodboards', '3–4 weeks', 'A design direction expressed through plans, references and the first physical material boards.'],
+      ['Design development & 3D', '4–6 weeks', 'Detailed drawings and 3D visualisation of every key room, refined together until it feels right.'],
+      ['Material selection', '2–3 weeks', 'Stone yards, workshops and our material library — every finish chosen in person, in daylight.'],
+      ['Execution & site management', '4–9 months', 'Our team runs the site day to day, with weekly updates and regular walkthroughs.'],
+      ['Styling & handover', '2–3 weeks', 'Furniture, art and textiles installed; the house is styled, cleaned and handed over, ready to live in.']
+    ].map(([title, time, desc], i) => ({ num: String(i + 1).padStart(2, '0'), title, time, desc, id: `process-${i}`, alt: `${title} — studio or site photograph` }));
+
+    const fields = [
+      { label: 'Name', name: 'name', type: 'text', required: true, ph: '' },
+      { label: 'Phone', name: 'phone', type: 'tel', required: true, ph: '+91' },
+      { label: 'Email', name: 'email', type: 'email', required: true, ph: '' },
+      { label: 'Project location', name: 'location', type: 'text', required: false, ph: 'e.g. Model Town, Jalandhar' },
+      { label: 'Property size (sq ft)', name: 'size', type: 'text', required: false, ph: 'e.g. 5,000' }
+    ];
+    const selects = [
+      { label: 'Project type', name: 'type', options: ['Residence', 'Penthouse', 'Villa / Farmhouse', 'Commercial', 'Hospitality'] },
+      { label: 'Approximate budget', name: 'budget', options: ['₹50L – 1 Cr', '₹1 – 2 Cr', '₹2 – 5 Cr', '₹5 Cr +', 'Prefer to discuss'] },
+      { label: 'Timeline', name: 'timeline', options: ['Within 3 months', '3–6 months', '6–12 months', 'Exploring'] }
+    ];
+
+    return {
+      nav, menuOpen: s.menu, menuLabel: s.menu ? 'Close' : 'Menu',
+      toggleMenu: () => this.setState(st => ({ menu: !st.menu })),
+      goHome: () => this.go('home'), goPortfolio: () => this.go('portfolio'), goAbout: () => this.go('about'),
+      goServices: () => this.go('services'), goProcess: () => this.go('process'), goContact: () => this.go('contact'),
+      isHome: s.page === 'home', isPortfolio: s.page === 'portfolio', isProject: s.page === 'project', isAbout: s.page === 'about',
+      isServices: s.page === 'services', isProcess: s.page === 'process', isJournal: s.page === 'journal', isContact: s.page === 'contact',
+      notContact: s.page !== 'contact', floatOp: (s.page !== 'home' || s.past) ? 1 : 0, floatPe: (s.page !== 'home' || s.past) ? 'auto' : 'none',
+      heroSlides, projects, p1: projects[0], p2: projects[1],
+      filters, visibleProjects, noProjects: visibleProjects.length === 0, filterLower: s.filter.toLowerCase(),
+      leaveTile: () => this.setState({ hover: null }),
+      services, servicesTop: services.slice(0, 4), process,
+      press: [0, 1, 2, 3, 4].map(i => ({ id: `press-${i}` })),
+      testimonials: [
+        { quote: 'They listened to three generations and somehow built one house we all recognise as ours.', who: 'A.S.', project: 'Residence, Jalandhar' },
+        { quote: 'Calm, exacting and always honest about cost. The farmhouse was finished the week they promised.', who: 'R.K.', project: 'Farmhouse, Ludhiana' }
+      ],
+      insta: ['Brass detail', 'Stone yard visit', 'Moodboard in progress', 'Site, Ludhiana', 'Workshop, sheesham joinery', 'Finished room vignette'].map((alt, i) => ({ id: `ig-${i}`, alt })),
+      beliefs: [
+        { title: 'Of this place', text: 'Punjab’s crafts, climate and way of gathering shape every plan — not as ornament, but as structure.' },
+        { title: 'Made by hand', text: 'We work with stone carvers, brass workers and weavers whose skill gives a room its weight and warmth.' },
+        { title: 'Built to last', text: 'We design for decades, not seasons. Nothing goes in that we wouldn’t want to see in twenty years.' }
+      ],
+      studioShots: [
+        { id: 'studio-1', ratio: '4/5', alt: 'Material library — stone, timber and textile samples', caption: 'The material library' },
+        { id: 'studio-2', ratio: '4/5', alt: 'Site visit — team reviewing joinery on site', caption: 'On site, Ludhiana' },
+        { id: 'studio-3', ratio: '4/5', alt: 'Studio desk with drawings and moodboards', caption: 'Drawings in progress' }
+      ],
+      team: [{ id: 'team-1', name: '[Founder Name]', role: 'Founder & Principal Designer' }, { id: 'team-2', name: '[Name]', role: 'Senior Interior Designer' }, { id: 'team-3', name: '[Name]', role: 'Project & Site Lead' }],
+      awards: [{ t: '[Award or publication]', y: '[Year]' }, { t: '[Award or publication]', y: '[Year]' }, { t: '[Award or publication]', y: '[Year]' }],
+      collaborators: [{ t: 'Thathera brass workers', y: 'Jandiala Guru' }, { t: 'Phulkari embroiderers', y: 'Patiala' }, { t: 'Stone carvers', y: 'Dholpur' }, { t: 'Handloom weavers', y: 'Panipat' }],
+      fees: [
+        { title: 'Design', basis: 'Fixed fee · per sq ft', text: 'Full design and documentation, billed in stages tied to each phase. You appoint contractors; we oversee design intent.' },
+        { title: 'Turnkey', basis: 'Design fee + project cost', text: 'We design and deliver end to end. Execution is costed transparently against an agreed budget, with milestone payments.' },
+        { title: 'Consultation', basis: 'Per session', text: 'A focused site visit and advisory session. The fee is adjusted against a full commission if you proceed.' }
+      ],
+      journal: [
+        { id: 'journal-1', cat: 'Material story', read: '6 min', title: 'Jaali, reconsidered', dek: 'How an old screen becomes a modern instrument for light, air and privacy.', alt: 'Brass jaali in afternoon sun' },
+        { id: 'journal-2', cat: 'Design ideas', read: '5 min', title: 'Living with Kota stone', dek: 'Why the humblest stone in North India ages more gracefully than marble.', alt: 'Honed Kota stone floor detail' },
+        { id: 'journal-3', cat: 'Sneak peek', read: '3 min', title: 'Inside the Orchard Farmhouse kitchen', dek: 'Teak, brass and a hearth built for winter Sundays.', alt: 'Farmhouse kitchen with teak cabinetry' }
+      ],
+      fields, selects, sent: s.sent, notSent: !s.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); window.scrollTo(0, 0); }
+    };
+  }
+}
+</script>
+</body>
+</html>
