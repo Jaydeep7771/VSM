@@ -38,7 +38,7 @@ export default function Studio() {
           />
           <Reveal delay={220}>
             <p className="lede max-w-[50ch]">
-              vSM Innovators was founded by {studio.founder} on a simple conviction: that a home in
+              VSM Innovators was founded by {studio.founder} on a simple conviction: that a home in
               Jalandhar, Ludhiana or Amritsar deserves the same rigour as any address in the world —
               and should still feel unmistakably of this place.
             </p>
@@ -111,7 +111,7 @@ export default function Studio() {
             The hands behind the work.
           </h2>
           <p className="body-copy mt-7 max-w-[38ch]">
-            We design with the same workshops year after year. Their craft is part of how a vSM
+            We design with the same workshops year after year. Their craft is part of how a VSM
             interior is made — and part of why it lasts.
           </p>
         </Reveal>

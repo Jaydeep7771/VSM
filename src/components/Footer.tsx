@@ -40,7 +40,7 @@ export default function Footer() {
       <div className="shell grid max-w-[90rem] gap-14 py-[clamp(4rem,8vw,7rem)] md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <span className="flex items-baseline gap-2.5">
-            <span className="font-serif text-[1.75rem] leading-none tracking-[-0.02em]">vSM</span>
+            <span className="font-serif text-[1.75rem] leading-none tracking-[0.015em]">VSM</span>
             <span className="text-[0.5625rem] font-medium uppercase tracking-[0.42em]">
               Innovators
             </span>
@@ -104,7 +104,7 @@ export default function Footer() {
 
       <div className="shell max-w-[90rem] border-t border-hairline py-8">
         <div className="flex flex-wrap justify-between gap-4 text-[0.5625rem] uppercase tracking-[0.26em] text-ash">
-          <span>© {new Date().getFullYear()} vSM Innovators</span>
+          <span>© {new Date().getFullYear()} VSM Innovators</span>
           <span>Interior designer · Jalandhar · Ludhiana · Amritsar</span>
         </div>
       </div>

@@ -1,6 +1,6 @@
-# vSM Innovators — website
+# VSM Innovators — website
 
-Marketing site for **vSM Innovators**, a luxury interior design studio in Punjab
+Marketing site for **VSM Innovators**, a luxury interior design studio in Punjab
 serving Jalandhar, Ludhiana and Amritsar.
 
 Single-page React application with real routes, built on a strict black / white /

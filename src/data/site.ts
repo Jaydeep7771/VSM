@@ -13,7 +13,7 @@ const studioPhone = {
 } as const;
 
 export const studio = {
-  name: 'vSM Innovators',
+  name: 'VSM Innovators',
   tagline: 'Interior Design Studio · Punjab',
   blurb:
     'Luxury interior design for residences, villas and farmhouses in Jalandhar, Ludhiana and Amritsar.',
@@ -31,7 +31,7 @@ export const studio = {
   mapUrl:
     'https://www.google.com/maps/search/?api=1&query=' +
     encodeURIComponent(
-      'vSM Innovators, 1st Floor 400 Satyam Hospital Lane, Krishna Nagar, Adarsh Nagar, Jalandhar, Punjab 144008',
+      'VSM Innovators, 1st Floor 400 Satyam Hospital Lane, Krishna Nagar, Adarsh Nagar, Jalandhar, Punjab 144008',
     ),
   phone: studioPhone.display,
   phoneHref: `tel:+${studioPhone.e164}`,
@@ -79,7 +79,7 @@ export const heroSlides = [
 /* ------------------------------------------------------------------ */
 /* Projects                                                            */
 /*                                                                      */
-/* Every entry below is real vSM Innovators work. Descriptive fields    */
+/* Every entry below is real VSM Innovators work. Descriptive fields    */
 /* are optional on purpose: a project shows only the facts the studio   */
 /* has confirmed, so nothing is invented to fill a layout. Add          */
 /* `year`, `location`, `size`, `scope` and the narrative fields as the  */

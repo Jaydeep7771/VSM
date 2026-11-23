@@ -5,8 +5,8 @@ import { navigation, studio } from '../data/site';
 function Wordmark() {
   return (
     <span className="flex items-baseline gap-2.5 text-ink">
-      <span className="font-serif text-[1.75rem] font-normal leading-none tracking-[-0.02em]">
-        vSM
+      <span className="font-serif text-[1.75rem] font-normal leading-none tracking-[0.015em]">
+        VSM
       </span>
       <span className="text-[0.5625rem] font-medium uppercase tracking-[0.42em]">Innovators</span>
     </span>
