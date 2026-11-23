@@ -64,9 +64,19 @@ export default function Footer() {
 
         <div className="body-copy">
           <Eyebrow className="mb-5">Studio</Eyebrow>
-          {studio.address.map((line) => (
-            <div key={line}>{line}</div>
-          ))}
+          <a
+            href={studio.mapUrl}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="block not-italic transition-colors duration-500 hover:text-ink"
+          >
+            {studio.address.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </a>
+          <div className="mt-2 text-ash">{studio.visitNote}</div>
           <div className="mt-6 flex flex-col gap-1.5">
             <a
               href={studio.phoneHref}

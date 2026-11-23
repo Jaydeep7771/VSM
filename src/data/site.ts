@@ -17,8 +17,22 @@ export const studio = {
   tagline: 'Interior Design Studio · Punjab',
   blurb:
     'Luxury interior design for residences, villas and farmhouses in Jalandhar, Ludhiana and Amritsar.',
+  founder: 'Mehul Jain',
   cities: ['Jalandhar', 'Ludhiana', 'Amritsar'],
-  address: ['[Studio address]', 'Jalandhar, Punjab [PIN]', 'Visits by appointment'],
+  /** Full studio address, one line per rendered row. */
+  address: [
+    '1st Floor, 400 Satyam Hospital Lane',
+    'Opp. M.G.N. Public School, Krishna Nagar',
+    'Adarsh Nagar, Jalandhar, Punjab 144008',
+  ],
+  /** Condensed form for tight spaces such as the menu overlay. */
+  addressShort: 'Krishna Nagar, Adarsh Nagar, Jalandhar',
+  visitNote: 'Visits by appointment',
+  mapUrl:
+    'https://www.google.com/maps/search/?api=1&query=' +
+    encodeURIComponent(
+      'vSM Innovators, 1st Floor 400 Satyam Hospital Lane, Krishna Nagar, Adarsh Nagar, Jalandhar, Punjab 144008',
+    ),
   phone: studioPhone.display,
   phoneHref: `tel:+${studioPhone.e164}`,
   email: 'hello@vsminnovators.com',
@@ -390,7 +404,7 @@ export const studioShots = [
 ];
 
 export const team = [
-  { id: 'team-1', name: '[Founder Name]', role: 'Founder & Principal Designer' },
+  { id: 'team-1', name: 'Mehul Jain', role: 'Founder & Principal Designer' },
   { id: 'team-2', name: '[Name]', role: 'Senior Interior Designer' },
   { id: 'team-3', name: '[Name]', role: 'Project & Site Lead' },
 ];

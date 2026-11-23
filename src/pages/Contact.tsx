@@ -138,18 +138,40 @@ export default function Contact() {
           </a>
         </div>
 
-        <ImageSlot
-          alt="Studio location map — Jalandhar"
-          className="aspect-[4/3] w-full"
-          caption={false}
-        />
+        <a
+          href={studio.mapUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="group relative block"
+          aria-label="Open the studio location in Google Maps"
+        >
+          <ImageSlot
+            alt="Studio location map — Adarsh Nagar, Jalandhar"
+            className="aspect-[4/3] w-full"
+            caption={false}
+          />
+          <span className="absolute bottom-4 left-4 z-[5] inline-flex items-center gap-2.5 bg-white px-4 py-2.5 text-[0.625rem] font-medium uppercase tracking-[0.26em] text-ink transition-colors duration-500 group-hover:bg-ink group-hover:text-white">
+            Open in Maps
+            <span aria-hidden>→</span>
+          </span>
+        </a>
 
         <div className="grid gap-8 sm:grid-cols-2">
           <div className="body-copy">
             <Eyebrow className="mb-3">Studio</Eyebrow>
-            {studio.address.map((line) => (
-              <div key={line}>{line}</div>
-            ))}
+            <a
+              href={studio.mapUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="block transition-colors duration-500 hover:text-ink"
+            >
+              {studio.address.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </a>
+            <div className="mt-2 text-ash">{studio.visitNote}</div>
           </div>
           <div className="body-copy">
             <Eyebrow className="mb-3">Working across</Eyebrow>

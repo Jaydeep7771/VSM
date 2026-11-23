@@ -173,9 +173,9 @@ export default function Header() {
             </p>
             <div className="h-px w-16 bg-line" />
             <div className="body-copy">
-              Studio visits by appointment
+              {studio.visitNote}
               <br />
-              {studio.address[0]}, Jalandhar, Punjab
+              {studio.addressShort}
             </div>
             <div className="flex flex-wrap gap-8 text-[0.625rem] font-medium uppercase tracking-[0.26em]">
               <a

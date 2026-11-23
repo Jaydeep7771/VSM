@@ -1,4 +1,4 @@
-import { awards, beliefs, collaborators, studioShots, team } from '../data/site';
+import { awards, beliefs, collaborators, studio, studioShots, team } from '../data/site';
 import { Eyebrow, ImageSlot, Reveal, WordReveal } from '../components/Primitives';
 
 function TwoColumnList({ title, rows }: { title: string; rows: { t: string; y: string }[] }) {
@@ -38,7 +38,7 @@ export default function Studio() {
           />
           <Reveal delay={220}>
             <p className="lede max-w-[50ch]">
-              vSM Innovators was founded by [Founder Name] on a simple conviction: that a home in
+              vSM Innovators was founded by {studio.founder} on a simple conviction: that a home in
               Jalandhar, Ludhiana or Amritsar deserves the same rigour as any address in the world —
               and should still feel unmistakably of this place.
             </p>
