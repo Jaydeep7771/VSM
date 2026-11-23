@@ -1,4 +1,4 @@
-import { awards, beliefs, collaborators, studio, studioShots, team } from '../data/site';
+import { beliefs, collaborators, studio, studioShots } from '../data/site';
 import { Eyebrow, ImageSlot, Reveal, WordReveal } from '../components/Primitives';
 
 function TwoColumnList({ title, rows }: { title: string; rows: { t: string; y: string }[] }) {
@@ -48,16 +48,20 @@ export default function Studio() {
             </p>
           </Reveal>
         </div>
-        <Reveal delay={150}>
+        <Reveal delay={150} as="figure" className="m-0">
           <div className="overflow-hidden">
             <div className="transition-transform duration-[1800ms] ease-[cubic-bezier(.16,1,.3,1)] hover:scale-[1.04]">
               <ImageSlot
-                alt="Portrait of the founder in the studio, natural light"
+                alt={`Portrait of ${studio.founder} in the studio, natural light`}
                 className="aspect-[4/5] w-full"
                 caption={false}
               />
             </div>
           </div>
+          <figcaption className="mt-6 flex flex-wrap items-baseline justify-between gap-3">
+            <span className="serif-sm text-[1.375rem]">{studio.founder}</span>
+            <Eyebrow>Founder &amp; Principal Designer</Eyebrow>
+          </figcaption>
         </Reveal>
       </section>
 
@@ -100,34 +104,17 @@ export default function Studio() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="shell max-w-[90rem] pb-[clamp(5rem,10vw,9rem)]">
+      {/* Craft collaborators */}
+      <section className="shell grid max-w-[90rem] gap-[clamp(2rem,5vw,5rem)] pb-[clamp(5rem,10vw,9rem)] lg:grid-cols-[1fr_1.2fr]">
         <Reveal>
-          <div className="rule mb-7" />
-          <h2 className="display mb-14 text-[clamp(2.125rem,4.2vw,3.75rem)]">The team</h2>
+          <h2 className="display m-0 max-w-[14ch] text-[clamp(2.125rem,4.2vw,3.75rem)]">
+            The hands behind the work.
+          </h2>
+          <p className="body-copy mt-7 max-w-[38ch]">
+            We design with the same workshops year after year. Their craft is part of how a vSM
+            interior is made — and part of why it lasts.
+          </p>
         </Reveal>
-        <Reveal stagger className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {team.map((member) => (
-            <div key={member.id} className="group">
-              <div className="overflow-hidden">
-                <div className="transition-transform duration-[1600ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.05]">
-                  <ImageSlot
-                    alt={`Team portrait — ${member.role}`}
-                    className="aspect-square w-full"
-                    caption={false}
-                  />
-                </div>
-              </div>
-              <div className="serif-sm mt-6 text-[1.375rem]">{member.name}</div>
-              <Eyebrow className="mt-2.5">{member.role}</Eyebrow>
-            </div>
-          ))}
-        </Reveal>
-      </section>
-
-      {/* Recognition + collaborators */}
-      <section className="shell grid max-w-[90rem] gap-[clamp(2.5rem,6vw,6rem)] pb-[clamp(5rem,10vw,9rem)] md:grid-cols-2">
-        <TwoColumnList title="Recognition & press" rows={awards} />
         <TwoColumnList title="Craft collaborators" rows={collaborators} />
       </section>
     </>

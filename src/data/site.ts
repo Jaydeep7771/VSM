@@ -403,17 +403,12 @@ export const studioShots = [
   },
 ];
 
-export const team = [
-  { id: 'team-1', name: 'Mehul Jain', role: 'Founder & Principal Designer' },
-  { id: 'team-2', name: '[Name]', role: 'Senior Interior Designer' },
-  { id: 'team-3', name: '[Name]', role: 'Project & Site Lead' },
-];
-
-export const awards = [
-  { t: '[Award or publication]', y: '[Year]' },
-  { t: '[Award or publication]', y: '[Year]' },
-  { t: '[Award or publication]', y: '[Year]' },
-];
+/*
+ * A team grid and a "Recognition & press" list used to sit here. Both were
+ * placeholder-only and have been removed rather than shipped empty. To bring
+ * the team section back, restore an array of { id, name, role } and render it
+ * on the studio page the way studioShots is rendered.
+ */
 
 export const collaborators = [
   { t: 'Thathera brass workers', y: 'Jandiala Guru' },
