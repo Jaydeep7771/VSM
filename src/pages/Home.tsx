@@ -163,7 +163,12 @@ function ProjectCard({
     <Link to={`/portfolio/${project.slug}`} className="group block">
       <div className="relative overflow-hidden">
         <div className="transition-transform duration-[1600ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]">
-          <ImageSlot alt={project.coverAlt} className={`w-full ${aspect}`} caption={false} />
+          <ImageSlot
+            src={project.cover.src}
+            alt={project.cover.alt}
+            className={`w-full ${aspect}`}
+            caption={false}
+          />
         </div>
 
         {/* Hover plate: darkens the image and offers the action */}
@@ -188,7 +193,7 @@ function ProjectCard({
           {project.name}
         </h3>
         <span className="text-[0.625rem] uppercase tracking-[0.26em] text-ash">
-          {project.location} · {project.type}
+          {[project.location, project.type].filter(Boolean).join(' · ')}
         </span>
       </div>
     </Link>
@@ -200,7 +205,7 @@ function SelectedWork() {
     <section className="shell max-w-[90rem] pb-[clamp(5rem,11vw,10rem)]">
       <SectionHead title="Selected work" action={<TextLink to="/portfolio">All projects</TextLink>} />
       <div className="grid gap-x-[clamp(1.5rem,4vw,4.5rem)] gap-y-[clamp(3rem,6vw,5.5rem)] md:grid-cols-5">
-        {projects.map((p, i) => (
+        {projects.slice(0, 2).map((p, i) => (
           <Reveal
             as="article"
             key={p.slug}

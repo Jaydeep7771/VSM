@@ -81,7 +81,12 @@ export default function Portfolio() {
                 <Link to={`/portfolio/${p.slug}`} className="group block">
                   <div className="relative overflow-hidden">
                     <div className="transition-transform duration-[1600ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]">
-                      <ImageSlot alt={p.coverAlt} className="aspect-[4/5] w-full" caption={false} />
+                      <ImageSlot
+                        src={p.cover.src}
+                        alt={p.cover.alt}
+                        className="aspect-[4/5] w-full"
+                        caption={false}
+                      />
                     </div>
                     <div className="absolute inset-0 z-[4] bg-ink/0 transition-colors duration-[900ms] ease-out group-hover:bg-ink/25" />
                     <div className="absolute inset-x-0 bottom-0 z-[5] flex translate-y-3 items-center justify-between gap-4 p-7 opacity-0 transition-all duration-[900ms] ease-out group-hover:translate-y-0 group-hover:opacity-100">
@@ -102,10 +107,10 @@ export default function Portfolio() {
                       {p.name}
                     </h2>
                     <span className="text-[0.625rem] uppercase tracking-[0.26em] text-ash">
-                      {p.location} · {p.year}
+                      {[p.location, p.year, p.medium].filter(Boolean).join(' · ')}
                     </span>
                   </div>
-                  <p className="body-copy mt-3.5 max-w-[46ch]">{p.scope}</p>
+                  <p className="body-copy mt-3.5 max-w-[46ch]">{p.summary}</p>
                 </Link>
               </Reveal>
             ))}

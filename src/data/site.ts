@@ -57,18 +57,18 @@ export const navigation: NavItem[] = [
 export const heroSlides = [
   {
     id: 'hero-0',
-    src: '/hero/haveli-living-room.jpg',
-    alt: 'Signature living room, Haveli Lane Residence — wide, morning light',
+    src: '/work/residence-elevation-night.jpg',
+    alt: 'Private residence elevation at night — stone, timber screens and planted balconies',
   },
   {
     id: 'hero-1',
-    src: '/hero/orchard-verandah-dusk.jpg',
-    alt: 'Orchard Farmhouse verandah at dusk',
+    src: '/work/office-reception-lounge.jpg',
+    alt: 'Office reception lounge with a curved glass screen and a sculpted timber ceiling',
   },
   {
     id: 'hero-2',
-    src: '/hero/jaali-plaster-detail.jpg',
-    alt: 'Detail: brass jaali and lime plaster in raking light',
+    src: '/work/commercial-block-elevation.jpg',
+    alt: 'Commercial block elevation with sculpted fins and concealed lighting',
   },
 ] as const;
 
@@ -76,174 +76,127 @@ export const heroSlides = [
 /* Projects                                                            */
 /* ------------------------------------------------------------------ */
 
-export type Room = {
-  num: string;
-  room: string;
-  text: string;
-  wide: { id: string; alt: string };
-  details: { id: string; alt: string }[];
-};
+/* ------------------------------------------------------------------ */
+/* Projects                                                            */
+/*                                                                      */
+/* Every entry below is real vSM Innovators work. Descriptive fields    */
+/* are optional on purpose: a project shows only the facts the studio   */
+/* has confirmed, so nothing is invented to fill a layout. Add          */
+/* `year`, `location`, `size`, `scope` and the narrative fields as the  */
+/* details are confirmed and the page will render them.                 */
+/* ------------------------------------------------------------------ */
+
+export type Shot = { src: string; alt: string };
 
 export type Project = {
   slug: string;
   name: string;
-  location: string;
   type: string;
-  size: string;
-  year: string;
-  scope: string;
-  coverAlt: string;
-  brief: string;
-  approach: string;
-  materials: string;
-  /** Material names shown with a neutral swatch — the palette stays monochrome. */
-  palette: { name: string; tone: string }[];
-  rooms: Room[];
-  compare: { a: string; b: string }[];
-  quote: string;
-  client: string;
+  /** Visualisation vs. a photograph of completed work — stated on the page. */
+  medium: 'Visualisation' | 'Completed';
+  cover: Shot;
+  summary: string;
+  gallery?: Shot[];
+  location?: string;
+  year?: string;
+  size?: string;
+  scope?: string;
+  brief?: string;
+  approach?: string;
+  materials?: string;
 };
 
-const rawProjects = [
+export const projects: Project[] = [
   {
-    slug: 'haveli-lane-residence',
-    name: 'Haveli Lane Residence',
-    location: 'Jalandhar',
+    slug: 'private-residence-elevation',
+    name: 'Private Residence',
     type: 'Residential',
-    size: '6,400 sq ft',
-    year: '2025',
-    scope: 'Full-service design, turnkey execution, furniture & art curation',
-    coverAlt:
-      'Haveli Lane Residence — double-height living room with lime-plaster walls and brass jaali screen, Jalandhar',
-    brief:
-      'A family of three generations wanted one house that could hold both: the courtyard gatherings of their childhood and the quiet, private rooms of contemporary life.',
-    approach:
-      'We organised the plan around a sky-lit inner court, letting every room borrow its light. Traditional elements — jaali, chowkat doorframes, terrazzo floors — were redrawn with cleaner proportions, so the house reads as heritage without becoming a period piece.',
-    materials:
-      'Lime plaster, Jaisalmer and Kota stone, reclaimed sheesham, hand-beaten brass, khadi and handloom linen.',
-    palette: [
-      { name: 'Lime white', tone: '#f1f1f1' },
-      { name: 'Jaisalmer', tone: '#d2d2d2' },
-      { name: 'Kota grey', tone: '#a6a6a6' },
-      { name: 'Sheesham', tone: '#5c5c5c' },
-      { name: 'Brass', tone: '#2e2e2e' },
-    ],
-    rooms: [
-      {
-        room: 'The Court',
-        text: 'A sky-lit court at the centre of the house — the place every morning begins and every festival ends.',
-        wideAlt: 'Wide view of the inner courtyard with terrazzo floor and skylight',
-        detailAlts: [
-          'Detail: brass jaali casting patterned light',
-          'Detail: hand-finished lime plaster texture',
-        ],
-      },
-      {
-        room: 'Living & Dining',
-        text: 'Low seating, deep window seats and a twelve-seat table cut from a single slab of reclaimed sheesham.',
-        wideAlt: 'Living and dining room, warm afternoon light',
-        detailAlts: ['Detail: sheesham dining table joinery', 'Detail: handloom linen upholstery'],
-      },
-      {
-        room: 'Principal Suite',
-        text: 'Stillness above all: Kota stone, soft linen and a single framed view of the garden neem.',
-        wideAlt: 'Principal bedroom with Kota stone floor and garden view',
-        detailAlts: ['Detail: carved chowkat door frame', 'Detail: brass bedside lamp'],
-      },
-    ],
-    compare: [
-      { a: 'Material moodboard', b: 'Completed living room' },
-      { a: '3D visualisation — courtyard', b: 'Completed courtyard' },
-    ],
-    quote: 'They listened to three generations and somehow built one house we all recognise as ours.',
-    client: 'The S. family, Jalandhar',
+    medium: 'Visualisation',
+    cover: {
+      src: '/work/residence-elevation-night.jpg',
+      alt: 'Private residence elevation at night — stone, timber screens and planted balconies',
+    },
+    summary:
+      'A three-storey residence organised around deep balconies and timber screens, with a full-height stone portal anchoring the entrance. Lit to be read from the street after dark.',
   },
   {
-    slug: 'orchard-farmhouse',
-    name: 'The Orchard Farmhouse',
-    location: 'Ludhiana',
-    type: 'Villa / Farmhouse',
-    size: '11,500 sq ft',
-    year: '2024',
-    scope: 'Interior architecture, custom furniture, landscape-facing pavilions, styling',
-    coverAlt: 'The Orchard Farmhouse — verandah opening onto a guava orchard, Ludhiana',
-    brief:
-      'A weekend farmhouse among guava orchards, built for long lunches and large gatherings — open to the land, yet comfortable through Punjab’s winters.',
-    approach:
-      'Deep verandahs and folding timber screens blur the line between house and orchard. Inside, warm stone, rammed-earth walls and fireplaces of hand-cut sandstone keep the rooms generous in scale but intimate in feeling.',
-    materials: 'Rammed earth, Dholpur sandstone, teak, cane, block-printed cotton, aged brass.',
-    palette: [
-      { name: 'Earth', tone: '#8a8a8a' },
-      { name: 'Dholpur', tone: '#dcdcdc' },
-      { name: 'Orchard', tone: '#6f6f6f' },
-      { name: 'Teak', tone: '#3d3d3d' },
-      { name: 'Cane', tone: '#c2c2c2' },
-    ],
-    rooms: [
+    slug: 'corporate-office',
+    name: 'Corporate Office',
+    type: 'Commercial',
+    medium: 'Visualisation',
+    cover: {
+      src: '/work/office-directors-cabin.jpg',
+      alt: "Director's cabin with full-height timber shelving and a backlit feature wall",
+    },
+    summary:
+      'A full office floor: director’s cabin, boardroom, reception lounge and a gallery corridor. Warm timber joinery and layered lighting carry through every room.',
+    gallery: [
       {
-        room: 'The Verandah',
-        text: 'Thirty metres of shaded verandah, where lunch runs into dusk and the orchard does the decorating.',
-        wideAlt: 'Long verandah with cane furniture overlooking the orchard',
-        detailAlts: [
-          'Detail: folding teak screen hardware',
-          'Detail: block-printed cushions on cane daybed',
-        ],
+        src: '/work/office-conference-room.jpg',
+        alt: 'Boardroom with fluted panelling, linear lighting and a twelve-seat table',
       },
       {
-        room: 'The Great Room',
-        text: 'A double-height hall warmed by a sandstone hearth, scaled for forty guests yet calm for two.',
-        wideAlt: 'Great room with sandstone fireplace and rammed-earth walls',
-        detailAlts: ['Detail: rammed-earth wall strata', 'Detail: aged brass pendant lighting'],
+        src: '/work/office-reception-lounge.jpg',
+        alt: 'Reception lounge with a curved glass screen and a sculpted timber ceiling',
       },
       {
-        room: 'Guest Pavilions',
-        text: 'Four pavilions set among the trees, each with its own garden bath and morning light.',
-        wideAlt: 'Guest pavilion bedroom with orchard view',
-        detailAlts: ['Detail: stone garden bath', 'Detail: hand-woven bed throw'],
+        src: '/work/office-gallery-corridor.jpg',
+        alt: 'Gallery corridor with a slatted timber ceiling and a suspended display wall',
       },
     ],
-    compare: [
-      { a: 'Concept sketch — verandah', b: 'Completed verandah' },
-      { a: '3D visualisation — great room', b: 'Completed great room' },
-    ],
-    quote:
-      'It feels as if the house has always stood in the orchard. That was exactly what we hoped for.',
-    client: 'Mr & Mrs K., Ludhiana',
+  },
+  {
+    slug: 'handlooms-store',
+    name: 'Handlooms Store',
+    type: 'Retail',
+    medium: 'Visualisation',
+    cover: {
+      src: '/work/handlooms-store-facade.jpg',
+      alt: 'Handlooms store facade at dusk — arched display windows over three lit floors',
+    },
+    summary:
+      'A classical retail facade built around display: arched windows stacked over three floors, each one lit so the fabric reads from the street at dusk.',
+  },
+  {
+    slug: 'showroom-reception',
+    name: 'Showroom & Reception',
+    type: 'Commercial',
+    medium: 'Visualisation',
+    cover: {
+      src: '/work/showroom-reception.jpg',
+      alt: 'Showroom reception with arched stone niches, herringbone flooring and an open stair',
+    },
+    summary:
+      'A narrow showroom floor opened up with arched niches, a sculpted ceiling and a herringbone floor that draws visitors toward the stair.',
+  },
+  {
+    slug: 'commercial-block',
+    name: 'Commercial Block',
+    type: 'Commercial',
+    medium: 'Visualisation',
+    cover: {
+      src: '/work/commercial-block-elevation.jpg',
+      alt: 'Commercial block elevation with sculpted fins, concealed lighting and a ground-floor pharmacy',
+    },
+    summary:
+      'A mixed-use block fronted by sculpted vertical fins and concealed lighting, with retail and a pharmacy at street level.',
   },
 ];
 
-export const projects: Project[] = rawProjects.map((p) => ({
-  ...p,
-  rooms: p.rooms.map((r, j) => ({
-    num: String(j + 1).padStart(2, '0'),
-    room: r.room,
-    text: r.text,
-    wide: { id: `${p.slug}-r${j}-wide`, alt: r.wideAlt },
-    details: r.detailAlts.map((alt, k) => ({ id: `${p.slug}-r${j}-d${k}`, alt })),
-  })),
-}));
+export const projectTypes = ['All', 'Residential', 'Commercial', 'Retail'];
 
-export const projectTypes = [
-  'All',
-  'Residential',
-  'Penthouse',
-  'Villa / Farmhouse',
-  'Commercial',
-  'Hospitality',
-];
-
+/** Only the facts that have been confirmed for a project. */
 export function projectFacts(p: Project) {
   return [
-    { k: 'Location', v: `${p.location}, Punjab` },
-    { k: 'Size', v: p.size },
-    { k: 'Scope', v: p.scope },
-    { k: 'Year', v: p.year },
-  ];
+    { k: 'Type', v: p.type },
+    p.location ? { k: 'Location', v: p.location } : null,
+    p.size ? { k: 'Size', v: p.size } : null,
+    p.scope ? { k: 'Scope', v: p.scope } : null,
+    p.year ? { k: 'Year', v: p.year } : null,
+    { k: 'Shown as', v: p.medium },
+  ].filter((f): f is { k: string; v: string } => f !== null);
 }
 
-/* ------------------------------------------------------------------ */
-/* Services, process, fees                                             */
-/* ------------------------------------------------------------------ */
 
 export type Service = { num: string; title: string; desc: string; includes: string };
 
